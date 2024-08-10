@@ -6,10 +6,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 
 public class Contact_Us_Steps {
 
@@ -37,41 +41,45 @@ public class Contact_Us_Steps {
 
     @Given("I access the webdriver university contact us page")
     public void iAccessTheWebdriverUniversityContactUsPage() {
-        System.out.println("Test1");
+        driver.get("https://webdriveruniversity.com/Contact-Us/contactus.html");
     }
 
     @When("I enter a unique first name")
     public void iEnterAUniqueFirstName() {
-        System.out.println("Test2");
-
+        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys("AutoFirstName" + generateRandomNumber(5));
     }
 
     @And("I enter a unique last name")
     public void iEnterAUniqueLastName() {
-        System.out.println("Test3");
-
+        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys("AutoLastName" + generateRandomNumber(5));
     }
 
     @And("I enter a unique email address")
     public void iEnterAUniqueEmailAddress() {
-        System.out.println("Test4");
-
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("AutoEmail" + generateRandomNumber(10) + "@mail.com");
     }
 
     @And("I enter a unique comment")
     public void iEnterAUniqueComment() {
-        System.out.println("Test5");
-
+        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys("AutoMessage " + generateRandomString(20));
     }
 
     @And("I click on the submit button")
     public void iClickOnTheSubmitButton() {
-        System.out.println("Test6");
-
+        driver.findElement(By.xpath("//input[@value='SUBMIT']")).click();
     }
 
     @Then("I should be presented with a successful contact us submission message")
     public void iShouldBePresentedWithASuccessfulContactUsSubmissionMessage() {
-        System.out.println("Test7");
+        WebElement contactUsResponseCard = driver.findElement(By.xpath("//div[@id='contact_reply']/h1"));
+        Assert.assertEquals(contactUsResponseCard.getText(), "Thank You for your Message!");
+    }
+
+    private String generateRandomNumber(int length) {
+        return RandomStringUtils.randomNumeric(length);
+    }
+
+    private String generateRandomString(int length) {
+        return RandomStringUtils.randomAlphabetic(length);
     }
 }
