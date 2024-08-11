@@ -60,15 +60,9 @@ public class Login_Steps {
         driver.findElement(By.id("login-button")).click();
     }
 
-    @Then("I should be presented with a successful login message")
-    public void iShouldBePresentedWithASuccessfulLoginMessage() {
+    @Then("I should be presented with a {} login message")
+    public void iShouldBePresentedWithALoginMessage(String validationMessage) {
         String loginMessage = driver.switchTo().alert().getText();
-        Assert.assertEquals(loginMessage, "validation succeeded");
-    }
-
-    @Then("I should be presented with a failed login message")
-    public void iShouldBePresentedWithAFailedLoginMessage() {
-        String loginMessage = driver.switchTo().alert().getText();
-        Assert.assertEquals(loginMessage, "validation failed");
+        Assert.assertEquals(loginMessage, validationMessage);
     }
 }

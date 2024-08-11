@@ -1,20 +1,16 @@
 @login
 Feature: WebDriver University - Login Page
 
-  # common scenario steps
-  Background:
+  Scenario Outline: Validate Login - <validationMessage>
     Given I access the the WebDriver University login page
-
-  # valid username and password
-  Scenario: Validate Successful Login
-    When  I enter a username 'webdriver'
-    And   I enter a password webdriver123
+    When  I enter a username '<username>'
+    When  I enter a password <password>
     And   I click on the login button
-    Then  I should be presented with a successful login message
+    Then  I should be presented with a <validationMessage> login message
 
-  # valid username and invalid password
-  Scenario: Validate Unsuccessful Login
-    When  I enter a username 'webdriver'
-    When  I enter a password invalidUserPass
-    And   I click on the login button
-    Then  I should be presented with a failed login message
+    Examples:
+      | username   | password     | validationMessage    |
+      | webdriver  | webdriver123 | validation succeeded |
+      | webdriver  | webdriver1   | validation failed    |
+      | webdriver1 | webdriver123 | validation failed    |
+      | webdriver1 | webdriver1   | validation failed    |
