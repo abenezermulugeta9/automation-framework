@@ -16,19 +16,3 @@ Feature: WebDriver University - Login Page
     When  I enter a password invalidUserPass
     And   I click on the login button
     Then  I should be presented with a failed login message
-
-  # invalid username and valid password
-  Scenario: Validate Unsuccessful Login
-    Given I access the the WebDriver University login page
-    When  I enter a username 'invalidUser'
-    When  I enter a password webdriver123
-    And   I click on the login button
-    Then  I should be presented with a failed login message
-
-  # invalid username and password
-  Scenario: Validate Unsuccessful Login
-    Given I access the the WebDriver University login page
-    When  I enter a username 'invalidUser'
-    When  I enter a password invalidUserPass
-    And   I click on the login button
-    Then  I should be presented with a failed login message
