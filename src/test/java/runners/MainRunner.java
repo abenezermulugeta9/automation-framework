@@ -16,6 +16,8 @@ import io.cucumber.testng.CucumberOptions;
         glue = {"step_definitions"},
         // tags = "@contact-us",
         // tags = "@login",
+        // tags = "@contact-us-unique-data",
+        // tags = "@contact-us-specific-data",
         tags = "@regression",
         monochrome = true,
         dryRun = false,
