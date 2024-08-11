@@ -75,6 +75,26 @@ public class Contact_Us_Steps {
         Assert.assertEquals(contactUsResponseCard.getText(), "Thank You for your Message!");
     }
 
+    @When("I enter a specific first name {word}")
+    public void iEnterASpecificFirstName(String firstName) {
+        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys(firstName);
+    }
+
+    @And("I enter a specific last name {word}")
+    public void iEnterASpecificLastName(String lastName) {
+        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys(lastName);
+    }
+
+    @And("I enter a specific email address {word}")
+    public void iEnterASpecificEmailAddress(String email) {
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys(email);
+    }
+
+    @And("I enter a specific comment {string}")
+    public void iEnterASpecificComment(String comment) {
+        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(comment);
+    }
+
     private String generateRandomNumber(int length) {
         return RandomStringUtils.randomNumeric(length);
     }
