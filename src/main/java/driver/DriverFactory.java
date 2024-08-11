@@ -7,6 +7,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class DriverFactory {
 
     // using threads allows running tests in parallel
@@ -22,7 +26,8 @@ public class DriverFactory {
 
     public static WebDriver createDriver() {
         WebDriver driver = null;
-        String browser = "chrome";
+
+        String browser = getBrowserType();
 
         switch (browser) {
             case "chrome" -> {
@@ -62,6 +67,24 @@ public class DriverFactory {
         driver.manage().window().maximize();
 
         return driver;
+    }
+
+    private static String getBrowserType() {
+        String browser = null;
+
+        try {
+
+            FileInputStream propertiesFile = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties");
+
+            Properties properties = new Properties();
+            properties.load(propertiesFile);
+
+            browser = properties.getProperty("browser").toLowerCase().trim();
+        } catch (IOException exception) {
+            System.out.println(exception);
+        }
+
+        return browser;
     }
 
     public static void quitAndCleanUpDriver() {

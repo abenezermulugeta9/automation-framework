@@ -14,7 +14,6 @@ public class Login_Steps {
 
     private WebDriver driver = getDriver();
 
-
     @Given("I access the the WebDriver University login page")
     public void iAccessTheTheWebDriverUniversityLoginPage() {
         driver.get("https://webdriveruniversity.com/Login-Portal/index.html");
