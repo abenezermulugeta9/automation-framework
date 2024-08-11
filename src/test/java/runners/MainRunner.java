@@ -14,7 +14,8 @@ import io.cucumber.testng.CucumberOptions;
  */
 @CucumberOptions(features = {"classpath:features"},
         glue = {"step_definitions"},
-        tags = "@contact-us",
+        // tags = "@contact-us",
+        tags = "@login",
         monochrome = true,
         dryRun = false,
         plugin = {"pretty", "html:target/cucumber-report", "json:target/cucumber-report.json"})
