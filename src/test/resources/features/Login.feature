@@ -1,4 +1,4 @@
-@login
+@login @regression
 Feature: WebDriver University - Login Page
 
   Scenario Outline: Validate Login - <validationMessage>
