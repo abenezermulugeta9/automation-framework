@@ -2,6 +2,7 @@ package runners;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.DataProvider;
 
 /**
  * @param features   specified location of feature files
@@ -15,12 +16,19 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(features = {"classpath:features"},
         glue = {"step_definitions"},
         // tags = "@contact-us",
-        // tags = "@login",
+        tags = "@login",
         // tags = "@contact-us-unique-data",
         // tags = "@contact-us-specific-data",
-        tags = "@regression",
+        // tags = "@regression",
         monochrome = true,
         dryRun = false,
         plugin = {"pretty", "html:target/cucumber-report", "json:target/cucumber-report.json"})
 public class MainRunner extends AbstractTestNGCucumberTests {
+
+    // runs tests in parallel
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
+    }
 }
