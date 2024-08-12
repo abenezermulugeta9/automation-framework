@@ -16,10 +16,10 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(features = {"classpath:features"},
         glue = {"step_definitions"},
         // tags = "@contact-us",
-        tags = "@login",
+        // tags = "@login",
         // tags = "@contact-us-unique-data",
         // tags = "@contact-us-specific-data",
-        // tags = "@regression",
+        tags = "@regression",
         monochrome = true,
         dryRun = false,
         plugin = {"pretty", "html:target/cucumber-report", "json:target/cucumber-report.json"})
