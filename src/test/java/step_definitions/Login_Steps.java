@@ -8,10 +8,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import page_object.BasePageObject;
+import page_object.LoginPageObject;
 
 public class Login_Steps extends BasePageObject {
 
     private WebDriver driver = getDriver();
+
+    private final LoginPageObject loginPageObject;
+
+    public Login_Steps(LoginPageObject loginPageObject) {
+        this.loginPageObject = loginPageObject;
+    }
 
     @Given("I access the the WebDriver University login page")
     public void iAccessTheTheWebDriverUniversityLoginPage() {
