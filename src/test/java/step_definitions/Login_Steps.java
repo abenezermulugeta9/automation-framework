@@ -22,7 +22,7 @@ public class Login_Steps extends BasePageObject {
 
     @Given("I access the the WebDriver University login page")
     public void iAccessTheTheWebDriverUniversityLoginPage() {
-        setTestUrl("https://webdriveruniversity.com/Login-Portal/index.html");
+        loginPageObject.navigateToTestUrl();
     }
 
     @When("I enter a username {string}")
