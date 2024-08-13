@@ -20,12 +20,12 @@ public class Login_Steps extends BasePageObject {
 
     @When("I enter a username {string}")
     public void iEnterAUsername(String username) {
-        driver.findElement(By.id("text")).sendKeys(username);
+        sendKeys(By.id("text"), username);
     }
 
     @And("I enter a password {}")
     public void iEnterAPassword(String password) {
-        driver.findElement(By.id("password")).sendKeys(password);
+        sendKeys(By.id("password"), password);
     }
 
     @And("I click on the login button")

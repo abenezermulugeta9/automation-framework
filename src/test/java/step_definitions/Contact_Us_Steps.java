@@ -21,22 +21,22 @@ public class Contact_Us_Steps extends BasePageObject {
 
     @When("I enter a unique first name")
     public void iEnterAUniqueFirstName() {
-        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys("AutoFirstName" + generateRandomNumber(5));
+        sendKeys(By.xpath("//input[@name='first_name']"), "AutoFirstName" + generateRandomNumber(5));
     }
 
     @And("I enter a unique last name")
     public void iEnterAUniqueLastName() {
-        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys("AutoLastName" + generateRandomNumber(5));
+        sendKeys(By.xpath("//input[@name='last_name']"), "AutoLastName" + generateRandomNumber(5));
     }
 
     @And("I enter a unique email address")
     public void iEnterAUniqueEmailAddress() {
-        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("AutoEmail" + generateRandomNumber(10) + "@mail.com");
+        sendKeys(By.xpath("//input[@name='email']"), "AutoEmail" + generateRandomNumber(10) + "@mail.com");
     }
 
     @And("I enter a unique comment")
     public void iEnterAUniqueComment() {
-        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys("AutoMessage " + generateRandomString(20));
+        sendKeys(By.xpath("//textarea[@name='message']"), "AutoMessage " + generateRandomString(20));
     }
 
     @And("I click on the submit button")
@@ -52,21 +52,21 @@ public class Contact_Us_Steps extends BasePageObject {
 
     @When("I enter a specific first name {word}")
     public void iEnterASpecificFirstName(String firstName) {
-        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys(firstName);
+        sendKeys(By.xpath("//input[@name='first_name']"), firstName);
     }
 
     @And("I enter a specific last name {word}")
     public void iEnterASpecificLastName(String lastName) {
-        driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys(lastName);
+        sendKeys(By.xpath("//input[@name='last_name']"), lastName);
     }
 
     @And("I enter a specific email address {word}")
     public void iEnterASpecificEmailAddress(String email) {
-        driver.findElement(By.xpath("//input[@name='email']")).sendKeys(email);
+        sendKeys(By.xpath("//input[@name='email']"), email);
     }
 
     @And("I enter a specific comment {string}")
     public void iEnterASpecificComment(String comment) {
-        driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(comment);
+        sendKeys(By.xpath("//textarea[@name='message']"), comment);
     }
 }
