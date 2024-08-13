@@ -41,7 +41,7 @@ public class Contact_Us_Steps extends BasePageObject {
 
     @And("I click on the submit button")
     public void iClickOnTheSubmitButton() {
-        driver.findElement(By.xpath("//input[@value='SUBMIT']")).click();
+        waitForWebElementAndClick(By.xpath("//input[@value='SUBMIT']"));
     }
 
     @Then("I should be presented with a successful contact us submission message")

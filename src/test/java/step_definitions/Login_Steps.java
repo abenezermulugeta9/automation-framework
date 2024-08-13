@@ -30,7 +30,7 @@ public class Login_Steps extends BasePageObject {
 
     @And("I click on the login button")
     public void iClickOnLoginButton() {
-        driver.findElement(By.id("login-button")).click();
+        waitForWebElementAndClick(By.id("login-button"));
     }
 
     @Then("I should be presented with a {} login message")

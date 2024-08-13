@@ -4,6 +4,7 @@ import driver.DriverFactory;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,5 +40,35 @@ public class BasePageObject {
          */
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(by)).sendKeys(payload);
+    }
+
+    protected void sendKeys(WebElement webElement, String payload) {
+        /**
+         * WebDriverWait in Selenium is used to introduce a wait in the script until a certain condition is met. This
+         * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
+         * become visible.
+         */
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement)).sendKeys(payload);
+    }
+
+    protected void waitForWebElementAndClick(By by) {
+        /**
+         * WebDriverWait in Selenium is used to introduce a wait in the script until a certain condition is met. This
+         * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
+         * become visible.
+         */
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+    }
+
+    protected void waitForWebElementAndClick(WebElement webElement) {
+        /**
+         * WebDriverWait in Selenium is used to introduce a wait in the script until a certain condition is met. This
+         * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
+         * become visible.
+         */
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
 }
