@@ -27,12 +27,12 @@ public class Login_Steps extends BasePageObject {
 
     @When("I enter a username {string}")
     public void iEnterAUsername(String username) {
-        sendKeys(By.id("text"), username);
+        loginPageObject.setUsernameField(username);
     }
 
     @And("I enter a password {}")
     public void iEnterAPassword(String password) {
-        sendKeys(By.id("password"), password);
+        loginPageObject.setPasswordField(password);
     }
 
     @And("I click on the login button")
