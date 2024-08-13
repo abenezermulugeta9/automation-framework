@@ -4,14 +4,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import page_object.BasePageObject;
 import page_object.LoginPageObject;
 
 public class Login_Steps extends BasePageObject {
-
-    private WebDriver driver = getDriver();
 
     private final LoginPageObject loginPageObject;
 
@@ -41,7 +37,6 @@ public class Login_Steps extends BasePageObject {
 
     @Then("I should be presented with a {} login message")
     public void iShouldBePresentedWithALoginMessage(String validationMessage) {
-        String loginMessage = driver.switchTo().alert().getText();
-        Assert.assertEquals(loginMessage, validationMessage);
+        loginPageObject.validateLoginMessage(validationMessage);
     }
 }

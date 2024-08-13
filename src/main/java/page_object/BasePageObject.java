@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -72,5 +73,17 @@ public class BasePageObject {
          */
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
+    }
+
+    protected void waitForAlertAndValidateText(String expectedText) {
+        /**
+         * WebDriverWait in Selenium is used to introduce a wait in the script until a certain condition is met. This
+         * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
+         * become visible.
+         */
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.alertIsPresent());
+        String alertBoxText = getDriver().switchTo().alert().getText();
+        Assert.assertEquals(alertBoxText, expectedText);
     }
 }
