@@ -4,21 +4,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import page_object.BasePageObject;
 
-import static driver.DriverFactory.getDriver;
-
-public class Contact_Us_Steps {
+public class Contact_Us_Steps extends BasePageObject {
 
     private WebDriver driver = getDriver();
 
     @Given("I access the webdriver university contact us page")
     public void iAccessTheWebdriverUniversityContactUsPage() {
-        driver.get("https://webdriveruniversity.com/Contact-Us/contactus.html");
+        setTestUrl("https://webdriveruniversity.com/Contact-Us/contactus.html");
     }
 
     @When("I enter a unique first name")
@@ -70,13 +68,5 @@ public class Contact_Us_Steps {
     @And("I enter a specific comment {string}")
     public void iEnterASpecificComment(String comment) {
         driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys(comment);
-    }
-
-    private String generateRandomNumber(int length) {
-        return RandomStringUtils.randomNumeric(length);
-    }
-
-    private String generateRandomString(int length) {
-        return RandomStringUtils.randomAlphabetic(length);
     }
 }
