@@ -9,34 +9,41 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import page_object.BasePageObject;
+import page_object.ContactUsPageObject;
 
 public class Contact_Us_Steps extends BasePageObject {
 
     private WebDriver driver = getDriver();
 
+    private final ContactUsPageObject contactUsPageObject;
+
+    public Contact_Us_Steps(ContactUsPageObject contactUsPageObject) {
+        this.contactUsPageObject = contactUsPageObject;
+    }
+
     @Given("I access the webdriver university contact us page")
     public void iAccessTheWebdriverUniversityContactUsPage() {
-        setTestUrl("https://webdriveruniversity.com/Contact-Us/contactus.html");
+        contactUsPageObject.navigateToTestUrl();
     }
 
     @When("I enter a unique first name")
     public void iEnterAUniqueFirstName() {
-        sendKeys(By.xpath("//input[@name='first_name']"), "AutoFirstName" + generateRandomNumber(5));
+        contactUsPageObject.setFirstNameField("AutoFirstName" + generateRandomNumber(5));
     }
 
     @And("I enter a unique last name")
     public void iEnterAUniqueLastName() {
-        sendKeys(By.xpath("//input[@name='last_name']"), "AutoLastName" + generateRandomNumber(5));
+        contactUsPageObject.setLastNameField("AutoLastName" + generateRandomNumber(5));
     }
 
     @And("I enter a unique email address")
     public void iEnterAUniqueEmailAddress() {
-        sendKeys(By.xpath("//input[@name='email']"), "AutoEmail" + generateRandomNumber(10) + "@mail.com");
+        contactUsPageObject.setEmailField("AutoEmail" + generateRandomNumber(10) + "@mail.com");
     }
 
     @And("I enter a unique comment")
     public void iEnterAUniqueComment() {
-        sendKeys(By.xpath("//textarea[@name='message']"), "AutoMessage " + generateRandomString(20));
+        contactUsPageObject.setCommentField("AutoMessage " + generateRandomString(20));
     }
 
     @And("I click on the submit button")
@@ -52,21 +59,21 @@ public class Contact_Us_Steps extends BasePageObject {
 
     @When("I enter a specific first name {word}")
     public void iEnterASpecificFirstName(String firstName) {
-        sendKeys(By.xpath("//input[@name='first_name']"), firstName);
+        contactUsPageObject.setFirstNameField(firstName);
     }
 
     @And("I enter a specific last name {word}")
     public void iEnterASpecificLastName(String lastName) {
-        sendKeys(By.xpath("//input[@name='last_name']"), lastName);
+        contactUsPageObject.setLastNameField(lastName);
     }
 
     @And("I enter a specific email address {word}")
     public void iEnterASpecificEmailAddress(String email) {
-        sendKeys(By.xpath("//input[@name='email']"), email);
+        contactUsPageObject.setEmailField(email);
     }
 
     @And("I enter a specific comment {string}")
     public void iEnterASpecificComment(String comment) {
-        sendKeys(By.xpath("//textarea[@name='message']"), comment);
+        contactUsPageObject.setCommentField(comment);
     }
 }
