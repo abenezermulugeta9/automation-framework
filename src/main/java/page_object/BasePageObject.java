@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.GlobalVars;
 
 import java.time.Duration;
 
@@ -41,7 +42,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(by)).sendKeys(payload);
     }
 
@@ -51,7 +52,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(webElement)).sendKeys(payload);
     }
 
@@ -61,7 +62,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
 
@@ -71,7 +72,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
 
@@ -81,7 +82,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.alertIsPresent());
         String alertBoxText = getDriver().switchTo().alert().getText();
         Assert.assertEquals(alertBoxText, expectedText);
@@ -93,7 +94,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
     }
 
@@ -103,7 +104,7 @@ public class BasePageObject {
          * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
          * become visible.
          */
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(GlobalVars.DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 }

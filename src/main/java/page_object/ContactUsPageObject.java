@@ -3,6 +3,7 @@ package page_object;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import utils.GlobalVars;
 
 public class ContactUsPageObject extends BasePageObject {
 
@@ -18,7 +19,7 @@ public class ContactUsPageObject extends BasePageObject {
     }
 
     public void navigateToTestUrl() {
-        setTestUrl("https://webdriveruniversity.com/Contact-Us/contactus.html");
+        setTestUrl(GlobalVars.WEBDRIVER_UNIVERSITY_CONTACT_US_PAGE_URL);
     }
 
     public void setFirstNameField(String firstName) {

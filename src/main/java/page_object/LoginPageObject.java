@@ -2,6 +2,7 @@ package page_object;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.GlobalVars;
 
 public class LoginPageObject extends BasePageObject {
 
@@ -14,7 +15,7 @@ public class LoginPageObject extends BasePageObject {
     }
 
     public void navigateToTestUrl() {
-        setTestUrl("https://webdriveruniversity.com/Login-Portal/index.html");
+        setTestUrl(GlobalVars.WEBDRIVER_UNIVERSITY_LOGIN_PAGE_URL);
     }
 
     public void setUsernameField(String username) {

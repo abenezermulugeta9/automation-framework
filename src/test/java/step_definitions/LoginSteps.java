@@ -7,11 +7,11 @@ import io.cucumber.java.en.When;
 import page_object.BasePageObject;
 import page_object.LoginPageObject;
 
-public class Login_Steps extends BasePageObject {
+public class LoginSteps extends BasePageObject {
 
     private final LoginPageObject loginPageObject;
 
-    public Login_Steps(LoginPageObject loginPageObject) {
+    public LoginSteps(LoginPageObject loginPageObject) {
         this.loginPageObject = loginPageObject;
     }
 

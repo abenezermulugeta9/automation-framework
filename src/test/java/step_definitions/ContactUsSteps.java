@@ -4,17 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import page_object.BasePageObject;
 import page_object.ContactUsPageObject;
 
-public class Contact_Us_Steps extends BasePageObject {
-
-    private WebDriver driver = getDriver();
+public class ContactUsSteps extends BasePageObject {
 
     private final ContactUsPageObject contactUsPageObject;
 
-    public Contact_Us_Steps(ContactUsPageObject contactUsPageObject) {
+    public ContactUsSteps(ContactUsPageObject contactUsPageObject) {
         this.contactUsPageObject = contactUsPageObject;
     }
 
