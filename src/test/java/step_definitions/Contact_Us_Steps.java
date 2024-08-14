@@ -4,10 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import page_object.BasePageObject;
 import page_object.ContactUsPageObject;
 
@@ -48,13 +45,12 @@ public class Contact_Us_Steps extends BasePageObject {
 
     @And("I click on the submit button")
     public void iClickOnTheSubmitButton() {
-        waitForWebElementAndClick(By.xpath("//input[@value='SUBMIT']"));
+        contactUsPageObject.clickOnSubmitButton();
     }
 
     @Then("I should be presented with a successful contact us submission message")
     public void iShouldBePresentedWithASuccessfulContactUsSubmissionMessage() {
-        WebElement contactUsResponseCard = driver.findElement(By.xpath("//div[@id='contact_reply']/h1"));
-        Assert.assertEquals(contactUsResponseCard.getText(), "Thank You for your Message!");
+        contactUsPageObject.validateSubmissionText("Thank You for your Message!");
     }
 
     @When("I enter a specific first name {word}")

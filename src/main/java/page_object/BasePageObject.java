@@ -86,4 +86,24 @@ public class BasePageObject {
         String alertBoxText = getDriver().switchTo().alert().getText();
         Assert.assertEquals(alertBoxText, expectedText);
     }
+
+    protected void waitFor(By by) {
+        /**
+         * WebDriverWait in Selenium is used to introduce a wait in the script until a certain condition is met. This
+         * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
+         * become visible.
+         */
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+    }
+
+    protected void waitFor(WebElement webElement) {
+        /**
+         * WebDriverWait in Selenium is used to introduce a wait in the script until a certain condition is met. This
+         * is particularly useful when dealing with dynamic web pages where elements may take some time to load or
+         * become visible.
+         */
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
 }
