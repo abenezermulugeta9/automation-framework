@@ -72,14 +72,21 @@ public class DriverFactory {
     private static String getBrowserType() {
         String browser = null;
 
+        // this stores' browser selector property coming from external sources like Jenkins
+        String externalBrowserSelector = System.getProperty("browserType");
+
         try {
+            // if the browser selector property is not set externally get it from local properties file
+            if (externalBrowserSelector == null || externalBrowserSelector.isEmpty()) {
+                FileInputStream propertiesFile = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties");
 
-            FileInputStream propertiesFile = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties");
+                Properties properties = new Properties();
+                properties.load(propertiesFile);
 
-            Properties properties = new Properties();
-            properties.load(propertiesFile);
-
-            browser = properties.getProperty("browser").toLowerCase().trim();
+                browser = properties.getProperty("browser").toLowerCase().trim();
+            } else {
+                browser = externalBrowserSelector;
+            }
         } catch (IOException exception) {
             System.out.println(exception);
         }
