@@ -8,7 +8,7 @@ import utils.GlobalVars;
 public class ContactUsPageObject extends BasePageObject {
 
     private @FindBy(xpath = "//input[@name='first_name']") WebElement firstNameField;
-    private @FindBy(xpath = "//input[@name='last_name']") WebElement lastNameField;
+    private @FindBy(xpath = "//input[@name='last_name']555") WebElement lastNameField;
     private @FindBy(xpath = "//input[@name='email']") WebElement emailField;
     private @FindBy(xpath = "//textarea[@name='message']") WebElement commentField;
     private @FindBy(xpath = "//input[@value='SUBMIT']") WebElement submitButton;
